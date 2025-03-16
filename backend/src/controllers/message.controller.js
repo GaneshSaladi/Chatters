@@ -7,7 +7,7 @@ import User from "../models/user.models.js";
 export const getUsersForSideBar = async (req,res)=>{
     try {
         const loggedInUserId = req.user._id;
-        const filteredUser = await User.find({_id: {$ne: loggedInUserId}}).select("-password -real_password");
+        const filteredUser = await User.find({_id: {$ne: loggedInUserId}}).select("-password -realpassword");
         res.status(200).json(filteredUser);
     } catch (error) {
         console.log("Error in usersidebar controller",error.message);
